@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cookie Clicker: Seven</title>
+    <link href="main.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="height=device-height, initial-scale=1">
+    <meta name="keywords" content="cookies, clicking, idle, game, project, az989">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body onload="load('Data Loaded.')" oncontextmenu="return false">
+    <audio id="music" loop>
+        <source src="sounds/music.mp3" type="audio/mp3">
+        <source src="sounds/music.ogg" type="audio/ogg">
+        Your browser doesn't support the audio element.
+    </audio>
+
+    <header class="credits">
+        <h1>Cookie Clicker: Seven</h1>
+        <h3>Created by: Az989, Dino-Pack</h3>
+        <h4>Version: <span id="version">0</span></h4>
+    </header>
+
+    <article class="playarea"> <!--main playloop (click cookie lol)-->
+        <div class="wrapper" id="wrapper"> <!--milk-->
+            <div class="wave"></div>
+        </div>
+
+        <div id="news">Loading News...</div>
+
+        <p class="info" id="info">
+            <span id="cookies">0</span>
+            Cookies
+            <br>
+
+            <span id="powernum">1</span>
+            Power
+            <br>
+
+            <span id="cpers">0</span>
+            CPS
+        </p>
+
+        <img src="images/cookie.png" class="cookie" id="cookie" style="width:250px" onClick="increment()">
+    </article>
+    
+
+    <article class="shop">
+        <table class="helpers">
+            <tr>
+                <td>
+                <table class="shopButton" onclick="buy(cursor)">
+                    <tr>
+                        <td id="image"><img src="images/placeholder.png"></td>
+                        <td id="nameAndCost">
+                            <p>Cursor</p>
+                            <p><span id="cursorP">10</span> Cookies</p>
+                        </td>
+                        <td id="total"><span id="cursors">0</span></td>
+                    </tr>
+                </table>
+                    
+                <table class="shopButton" onclick="buy(grandma)">
+                    <tr>
+                        <td id="image"><img src="images/placeholder.png"></td>
+                        <td id="nameAndCost">
+                            <p>Grandma</p>
+                            <p><span id="grandmaP">100</span> Cookies</p>
+                        </td>
+                        <td id="total"><span id="grandmas">0</span></td>
+                    </tr>
+                </table>
+                
+                <table class="shopButton" onclick="buy(farm)">
+                    <tr>
+                        <td id="image"><img src="images/placeholder.png"></td>
+                        <td id="nameAndCost">
+                            <p>Farm</p>
+                            <p><span id="farmP">250</span> Cookies</p>
+                        </td>
+                        <td id="total"><span id="farms">0</span></td>
+                    </tr>
+                </table>
+
+                <table class="shopButton" onclick="buy(factory)">
+                    <tr>
+                        <td id="image"><img src="images/placeholder.png"></td>
+                        <td id="nameAndCost">
+                            <p>Factory</p>
+                            <p><span id="factoryP">1000</span> Cookies</p>
+                        </td>
+                        <td id="total"><span id="factories">0</span></td>
+                    </tr>
+                </table>
+                </td>
+            </tr>
+        </table>
+    </article>
+
+    <article class="options">
+        <br>
+        <button type="button" onclick="save('Saved Data')">Save Data</button>
+        <button type="button" onclick="load('Loaded Data')">Load Data</button>
+        <button type="button" onclick="remove('Deleted Data')">Delete Data</button>
+    </article>
+
+    <article id="scripts">
+        <script src="scripts/main.js"></script>
+        <script src="scripts/save.js"></script>
+        <script src="scripts/helpers.js"></script>
+        <script src="scripts/buy.js"></script>
+        <script src="scripts/news.js"></script>
+    </article>
+</body>
+</html>
