@@ -19,12 +19,8 @@
     transform: scale(0.95);
 }
 
-table {
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .shopButton {
+    max-width: 24%;
     transition: all .1s ease-in-out;
     width:350px;
     height: 80px;
@@ -32,6 +28,8 @@ table {
     border-radius: 10px;
     margin: 10px 0px 10px 0px;
     padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .shopButton:hover {

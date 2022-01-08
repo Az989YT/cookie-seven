@@ -8,7 +8,7 @@
     <meta name="keywords" content="cookies, clicking, idle, game, project, az989">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body onload="load('Data Loaded.')" oncontextmenu="return false">
+<body onload="display.load()" oncontextmenu="return false">
     <audio id="music" loop>
         <source src="sounds/music.mp3" type="audio/mp3">
         <source src="sounds/music.ogg" type="audio/ogg">
@@ -18,7 +18,7 @@
     <header class="credits">
         <h1>Cookie Clicker: Seven</h1>
         <h3>Created by: Az989, Dino-Pack</h3>
-        <h4>Version: <span id="version">0</span></h4>
+        <h4>Version: <span id="version"></span></h4>
     </header>
 
     <article class="playarea"> <!--main playloop (click cookie lol)-->
@@ -41,60 +41,11 @@
             CPS
         </p>
 
-        <img src="images/cookie.png" class="cookie" id="cookie" style="width:250px" onClick="increment()">
+        <img src="images/cookie.png" class="cookie" id="cookie" style="width:250px" onClick="game.increment()">
     </article>
     
-
-    <article class="shop">
-        <table class="helpers">
-            <tr>
-                <td>
-                <table class="shopButton" onclick="buy(cursor)">
-                    <tr>
-                        <td id="image"><img src="images/placeholder.png"></td>
-                        <td id="nameAndCost">
-                            <p>Cursor</p>
-                            <p><span id="cursorP">10</span> Cookies</p>
-                        </td>
-                        <td id="total"><span id="cursors">0</span></td>
-                    </tr>
-                </table>
-                    
-                <table class="shopButton" onclick="buy(grandma)">
-                    <tr>
-                        <td id="image"><img src="images/placeholder.png"></td>
-                        <td id="nameAndCost">
-                            <p>Grandma</p>
-                            <p><span id="grandmaP">100</span> Cookies</p>
-                        </td>
-                        <td id="total"><span id="grandmas">0</span></td>
-                    </tr>
-                </table>
-                
-                <table class="shopButton" onclick="buy(farm)">
-                    <tr>
-                        <td id="image"><img src="images/placeholder.png"></td>
-                        <td id="nameAndCost">
-                            <p>Farm</p>
-                            <p><span id="farmP">250</span> Cookies</p>
-                        </td>
-                        <td id="total"><span id="farms">0</span></td>
-                    </tr>
-                </table>
-
-                <table class="shopButton" onclick="buy(factory)">
-                    <tr>
-                        <td id="image"><img src="images/placeholder.png"></td>
-                        <td id="nameAndCost">
-                            <p>Factory</p>
-                            <p><span id="factoryP">1000</span> Cookies</p>
-                        </td>
-                        <td id="total"><span id="factories">0</span></td>
-                    </tr>
-                </table>
-                </td>
-            </tr>
-        </table>
+    <article id="shop">
+        <p></p>
     </article>
 
     <article class="options">
@@ -106,10 +57,6 @@
 
     <article id="scripts">
         <script src="scripts/main.js"></script>
-        <script src="scripts/save.js"></script>
-        <script src="scripts/helpers.js"></script>
-        <script src="scripts/buy.js"></script>
-        <script src="scripts/news.js"></script>
     </article>
 </body>
 </html>
