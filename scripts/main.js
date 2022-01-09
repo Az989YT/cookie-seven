@@ -3,14 +3,7 @@ var game = {
     totalCookies: 0,
     totalClicks: 0,
     power: 1,
-    version: '0.0.0',
-
-    increment: function() {
-        this.cookies += this.power;
-        this.totalCookies += this.power;
-        this.totalClicks += 1;
-        display.updateScore();
-    },
+    version: '0.0.1',
 }
 
 var helpers = {
@@ -19,28 +12,21 @@ var helpers = {
         'Grandma',
         'Farm',
         'Factory',
+        'Cookie Gun',
+        'Boat Shipment',
     ],
     icon: [
         'placeholder.png',
         'placeholder.png',
         'placeholder.png',
         'placeholder.png',
+        'placeholder.png',
+        'placeholder.png',
     ],
-    power: [1, 5, 10, 25,],
-    total: [0, 0, 0, 0,],
-    price: [10, 100, 250, 1000,],
-    baseprice: [10, 100, 250, 1000],
-
-    purchase: function(index) {
-        if (game.cookies >= this.price[index]) {
-            game.cookies -= this.price[index];
-            this.total[index] += 1;
-            this.price[index] += this.baseprice[index] * 1.5;
-            this.price[index] = Math.round(this.price[index]);
-            display.updateScore();
-            display.updateShop();
-        }
-    },
+    power: [1, 5, 10, 25, 35, 50,],
+    total: [0, 0, 0, 0, 0, 0,],
+    price: [10, 100, 250, 1000, 1600, 2800,],
+    baseprice: [10, 100, 250, 1000, 1600, 2800],
 }
 
 var display = {
@@ -57,7 +43,7 @@ var display = {
     updateShop: function() {
         document.getElementById('shop').innerHTML = "";
         for (i = 0; i < helpers.name.length; i++) {
-            document.getElementById('shop').innerHTML += '<table class="shopButton" onclick="helpers.purchase('+i+')"> <tr> <td id="image"><image src="images/'+helpers.icon[i]+'"></image></td> <td id="nameAndCost"> <p>'+helpers.name[i]+'</p> <p><span>'+helpers.price[i]+'</span> Cookies</p> </td> <td id="total"><span>'+helpers.total[i]+'</span></td> </tr> </table>'
+            document.getElementById('shop').innerHTML += '<table class="shopButton" onclick="purchase('+i+')"> <tr> <td id="image"><image src="images/'+helpers.icon[i]+'"></image></td> <td id="nameAndCost"> <p>'+helpers.name[i]+'</p> <p><span>'+this.prettify(helpers.price[i])+'</span> Cookies</p> </td> <td id="total"><span>'+helpers.total[i]+'</span></td> </tr> </table>'
         }
     },
 
@@ -86,3 +72,62 @@ window.setInterval(function CPS() {
     game.totalCookies += display.totalCPS();
     display.updateScore();
 }, 1000)
+
+function increment() {
+    game.cookies += game.power;
+    game.totalCookies += game.power;
+    game.totalClicks += 1;
+    display.updateScore();
+}
+
+function purchase(index) {
+    if (game.cookies >= helpers.price[index]) {
+        game.cookies -= helpers.price[index];
+        helpers.total[index] += 1;
+        helpers.price[index] += helpers.baseprice[index] * 1.5;
+        helpers.price[index] = Math.round(helpers.price[index]);
+        display.updateScore();
+        display.updateShop();
+    }
+}
+
+function nullFix(x) { 
+    if (JSON.parse(localStorage.getItem(x)) === null || JSON.parse(localStorage.getItem(x)) === undefined)
+    {
+      y = y + 0;
+    }
+    else
+    {
+      y = JSON.parse(localStorage.getItem(x));
+    }
+    return y
+}
+
+function save(message) {
+    localStorage.setItem('cookies', JSON.stringify(game.cookies));
+    localStorage.setItem('totalCookies', JSON.stringify(game.totalCookies));
+    localStorage.setItem('totalClicks', JSON.stringify(game.totalClicks));
+    localStorage.setItem('power', JSON.stringify(game.power));
+    localStorage.setItem('helperTotal', JSON.stringify(helpers.total));
+    localStorage.setItem('helperPrice', JSON.stringify(helpers.price));
+
+    window.alert(message);
+}
+
+function load(message) {
+    game.cookies = nullFix('cookies');
+    game.totalCookies = nullFix('totalCookies');
+    game.totalClicks = nullFix('totalClicks');
+    game.power = nullFix('power');
+    helpers.total = nullFix('helperTotal');
+    helpers.price = nullFix('helperPrice');
+
+    display.load();
+    window.alert(message);
+}
+
+window.onbeforeunload = closingCode;
+function closingCode(){
+    save();
+    return null;
+}

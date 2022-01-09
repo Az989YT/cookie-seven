@@ -8,7 +8,7 @@
     <meta name="keywords" content="cookies, clicking, idle, game, project, az989">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body onload="display.load()" oncontextmenu="return false">
+<body onload="load('Loaded Data.')" oncontextmenu="return false">
     <audio id="music" loop>
         <source src="sounds/music.mp3" type="audio/mp3">
         <source src="sounds/music.ogg" type="audio/ogg">
@@ -19,6 +19,12 @@
         <h1>Cookie Clicker: Seven</h1>
         <h3>Created by: Az989, Dino-Pack</h3>
         <h4>Version: <span id="version"></span></h4>
+        
+        <article class="options">
+            <br>
+            <button type="button" onclick="save('Saved Data')">Save Data</button>
+            <button type="button" onclick="load('Loaded Data')">Load Data</button>
+        </article>
     </header>
 
     <article class="playarea"> <!--main playloop (click cookie lol)-->
@@ -41,18 +47,11 @@
             CPS
         </p>
 
-        <img src="images/cookie.png" class="cookie" id="cookie" style="width:250px" onClick="game.increment()">
+        <img src="images/cookie.png" class="cookie" id="cookie" style="width:250px" onClick="increment()">
     </article>
     
     <article id="shop">
         <p></p>
-    </article>
-
-    <article class="options">
-        <br>
-        <button type="button" onclick="save('Saved Data')">Save Data</button>
-        <button type="button" onclick="load('Loaded Data')">Load Data</button>
-        <button type="button" onclick="remove('Deleted Data')">Delete Data</button>
     </article>
 
     <article id="scripts">

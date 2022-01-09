@@ -5,9 +5,17 @@
     user-select: none;
 }
 
-.playarea {
-    max-width: 100%;
+.credits {
     text-align: center;
+}
+
+.playarea {
+    float:left;
+    width:70%;
+    max-width: 70%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cookie {
@@ -19,8 +27,13 @@
     transform: scale(0.95);
 }
 
+#shop {
+    max-width: 30%;
+    width: 30%;
+    float:right;
+}
+
 .shopButton {
-    max-width: 24%;
     transition: all .1s ease-in-out;
     width:350px;
     height: 80px;
