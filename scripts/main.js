@@ -143,10 +143,10 @@ function remove(message) {
 
 function downloadSave() {
     save('Download Starting...');
-    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(localStorage));
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(btoa(JSON.stringify(localStorage)));
     var downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href",     dataStr);
-    downloadAnchorNode.setAttribute("download", "CC7 Save" + ".json");
+    downloadAnchorNode.setAttribute("download", "CC7 Save" + ".txt");
     document.body.appendChild(downloadAnchorNode); // required for firefox
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
@@ -155,8 +155,8 @@ function downloadSave() {
 function loadSave() {
     var saveData = prompt('Paste save data here.')
     console.trace("Data Parsed: " + saveData);
-    if (saveData.startsWith('{"totalCookies":')) {
-        var parsedData = JSON.parse(saveData)
+    if (saveData.startsWith('eyJ')) {
+        var parsedData = JSON.parse(atob(saveData));
         console.trace(parsedData);
         game.cookies = parseInt(parsedData.cookies, 10);
         game.totalCookies = parseInt(parsedData.totalCookies, 10);
