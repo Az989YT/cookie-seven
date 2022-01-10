@@ -25,6 +25,7 @@ var helpers = {
     ],
     power: [1, 5, 10, 25, 35, 50,],
     total: [0, 0, 0, 0, 0, 0,],
+    basetotal: [0, 0, 0, 0, 0, 0,],
     price: [10, 100, 250, 1000, 1600, 2800,],
     baseprice: [10, 100, 250, 1000, 1600, 2800],
 }
@@ -125,6 +126,30 @@ function load(message) {
     display.load();
     window.alert(message);
 }
+
+function remove(message) {
+    var choice = confirm('Are you sure you want to delete your data?');
+    if (choice) {
+        localStorage.setItem('cookies', JSON.stringify(0));
+        localStorage.setItem('totalCookies', JSON.stringify(0));
+        localStorage.setItem('totalClicks', JSON.stringify(0));
+        localStorage.setItem('power', JSON.stringify(1));
+        localStorage.setItem('helperTotal', JSON.stringify(helpers.basetotal));
+        localStorage.setItem('helperPrice', JSON.stringify(helpers.baseprice));
+
+        load(message);
+    }
+}
+
+function downloadObjectAsJson(exportObj, exportName){
+    var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+    var downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", exportName + ".json");
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  }
 
 window.onbeforeunload = closingCode;
 function closingCode(){
