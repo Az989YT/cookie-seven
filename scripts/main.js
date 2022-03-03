@@ -147,29 +147,34 @@ function downloadSave() {
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(btoa(JSON.stringify(localStorage)));
     var downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href",     dataStr);
-    downloadAnchorNode.setAttribute("download", "CC7 Save" + ".txt");
-    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.setAttribute("download", "save" + ".cc7");
+    document.body.appendChild(downloadAnchorNode);
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
 }
 
 function loadSave() {
-    var saveData = prompt('Paste save data here.')
-    console.trace("Data Parsed: " + saveData);
-    if (saveData.startsWith('eyJ')) {
+    const [file] = document.querySelector('input[type=file]').files;
+    const reader = new FileReader();
+  
+    reader.addEventListener("load", () => { 
+        var saveData = reader.result;
         var parsedData = JSON.parse(atob(saveData));
-        console.trace(parsedData);
         game.cookies = parseInt(parsedData.cookies, 10);
         game.totalCookies = parseInt(parsedData.totalCookies, 10);
         game.totalClicks = parseInt(parsedData.totalClicks, 10);
         game.power = parseInt(parsedData.power, 10);
         helpers.total = JSON.parse(parsedData.helperTotal);
         helpers.price = JSON.parse(parsedData.helperPrice);
-
+        helpers.power = JSON.parse(parsedData.helperPower);
+        console.trace(parsedData);
         display.load();
         save('Save Loaded');
+    }, false);
+  
+    if (file) {
+      reader.readAsText(file);
     }
-    else console.warn('Not CC7 Save!')
 }
 
 window.onbeforeunload = closingCode;
