@@ -111,6 +111,7 @@ function save(message) {
     localStorage.setItem('power', JSON.stringify(game.power));
     localStorage.setItem('helperTotal', JSON.stringify(helpers.total));
     localStorage.setItem('helperPrice', JSON.stringify(helpers.price));
+    localStorage.setItem('version', JSON.stringify(game.version));
 
     window.alert(message);
 }
