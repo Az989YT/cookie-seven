@@ -1,1 +1,0 @@
-<table class="shopButton" onclick="building.purchase('+i+')"> <tr> <td id="image"><image src="images/'+helpers.icon[i]+'"></image></td> <td id="nameAndCost"> <p>'+helpers.name[i]+'</p> <p><span>'+helpers.cost[i]+'</span> Cookies</p> </td> <td id="total"><span>'+helpers.total[i]+'</span></td> </tr> </table>
