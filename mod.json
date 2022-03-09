@@ -1,0 +1,21 @@
+{
+    "name":"Example Mod",
+    "version":"0.0.0",
+    "helpers":
+    {
+        "helper0":
+        {
+            "name":"Custom Helper 1",
+            "icon":"placeholder.png",
+            "power":1,
+            "price":100
+        },
+        "helper1":
+        {
+            "name":"Custom Helper 2",
+            "icon":"placeholder.png",
+            "power":1,
+            "price":200
+        }
+    }
+}

@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400..800&display=swap');
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    user-select: none;
+}
+
+.shopButton {
+    transition: all .1s ease-in-out;
+    width:350px;
+    height: 80px;
+    background-color: #b5b5b5;
+    border-radius: 10px;
+    margin: 10px 0px 10px 0px;
+    padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shopButton:hover {
+    background-color: #e6e6e6;
+}
+
+.shopButton:active {
+    background-color: #7a7a7a;
+}
+
+.shopButton #image {
+    width:25%;
+}
+
+.shopButton img {
+    height: 64px;
+    width: 64px;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+
+.shopButton #nameAndCost p {
+    margin: 0px;
+    width: 90%;
+    vertical-align: middle;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.shopButton #nameAndCost p:first-of-type {
+    font-size: 17px;
+    font-style: normal;
+}
+
+.shopButton #total {
+    font-size: 24px;
+    font-weight: 650;
+    text-align: right;
+    padding-right: 10px;
+    padding-left: 0px;
+}

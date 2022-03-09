@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html oncontextmenu="return false">
 <head>
     <meta charset="utf-8">
     <title>Cookie Clicker: Seven</title>
     <link href="main.css" rel="stylesheet" type="text/css">
+    <link href="shopButton.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="height=device-height, initial-scale=1">
     <meta name="keywords" content="cookies, clicking, idle, game, project, az989">
     <link rel="icon" type="image/png" href="images/favicon.png">
@@ -15,7 +16,7 @@
     <meta content="https://raw.githubusercontent.com/Az989YT/cookie-seven/master/images/favicon.png" property="og:image" />
     <meta content="#009999" data-react-helmet="true" name="theme-color" />
 </head>
-<body onload="load('Loaded Data.')" oncontextmenu="return false">
+<body onload="load('Loaded Data.')">
     <audio id="music" loop>
         <source src="sounds/music.mp3" type="audio/mp3">
         <source src="sounds/music.ogg" type="audio/ogg">
@@ -24,16 +25,16 @@
 
     <header class="credits">
         <h1>Cookie Clicker: Seven</h1>
-        <h3>Created by: Az989, Dino-Pack</h3>
+        <h3>Created by: Az989, Dino-Pack, Redron36</h3>
         <h4>Version: <span id="version"></span></h4>
-        
-        <article class="options">
-            <br>
-            <button type="button" onclick="downloadSave()">Download Save</button>
-            <button type="button" onclick="loadSave()">Load Save</button>
-            <button type="button" onclick="remove('Deleted Data')">Delete Save</button>
-        </article>
     </header>
+         
+    <article class="options">
+        <br>
+        <label for="downloadSave" onclick="downloadSave()">Download Save</label> <input id="downloadSave" type="hidden">
+        <label for="deleteSave" onclick="remove('Deleted Data')">Delete Save</label> <input id="deleteSave" type="hidden">
+        <label for="loadSave">Load Save</label> <input id="loadSave" type="file" onchange="loadSave()" accept=".cc7">
+    </article>
 
     <article class="playarea"> <!--main playloop (click cookie lol)-->
         <div class="wrapper" id="wrapper"> <!--milk-->
@@ -55,15 +56,23 @@
             CPS
         </p>
 
-        <img src="images/cookie.png" class="cookie" id="cookie" style="width:250px" onClick="increment()">
+        <img src="images/cookie.png" class="cookie" id="cookie" style="width:300px" onClick="game.increment()">
     </article>
     
     <article id="shop">
-        <p></p>
+        <h1 style="text-align: center;">SHOP</h1>
+        <article id="helpers">
+            <p></p>
+        </article>
+
+        <article id="upgrades">
+            <p></p>
+        </article>
     </article>
 
     <article id="scripts">
         <script src="scripts/main.js"></script>
+        <script src="scripts/mods.js"></script>
     </article>
 </body>
 </html>
