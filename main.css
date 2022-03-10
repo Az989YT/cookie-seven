@@ -60,7 +60,7 @@ label:active {
     margin: auto;
 }
 
-#helpers {
+#helpers, #custom-helpers {
     max-width: 50%;
     float: left;
 }

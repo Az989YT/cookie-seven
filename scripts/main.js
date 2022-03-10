@@ -112,6 +112,12 @@ var display = {
         for (i = 0; i < upgrades.name.length; i++) {
             document.getElementById('upgrades').innerHTML += '<table class="shopButton" onclick="upgrades.purchase('+i+')"> <tr> <td id="image"><image src="images/'+upgrades.icon[i]+'"></image></td> <td id="nameAndCost"> <p>'+upgrades.name[i]+'</p> <p><span>'+this.prettify(upgrades.price[i])+'</span> Cookies</p> </td> <td id="total"><span>'+upgrades.total[i]+'</span></td> </tr> </table>'
         }
+
+        if (customHelpers.name.length !== 0) {
+            for (i = 0; i < customHelpers.name.length; i++) {
+                document.getElementById('helpers').innerHTML += '<table class="shopButton" onclick="customHelpers.purchase('+i+')"> <tr> <td id="image"><image src="images/'+customHelpers.icon[i]+'"></image></td> <td id="nameAndCost"> <p>'+customHelpers.name[i]+'</p> <p><span>'+display.prettify(customHelpers.price[i])+'</span> Cookies</p> </td> <td id="total"><span>'+customHelpers.total[i]+'</span></td> </tr> </table>'
+            }
+        }
     },
 
     load: function() {
@@ -124,6 +130,11 @@ var display = {
         var cookiesPerSecond = 0;
         for (i = 0; i < helpers.name.length; i++) {
             cookiesPerSecond += helpers.power[i] * helpers.total[i];
+        }
+        if (customHelpers.name.length !== 0) {
+            for (i = 0; i < customHelpers.name.length; i++) {
+                cookiesPerSecond += customHelpers.power[i] * customHelpers.total[i];
+            }
         }
         return cookiesPerSecond
     },
