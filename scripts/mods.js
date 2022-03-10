@@ -63,7 +63,7 @@ function loadHelpers() { //NOTE, RUN THIS FUNCTION ONLY WHEN ALL OF YOUR MODS AR
     display.updateShop();
 }
 
-function loadMod(link) {
+function loadMod(link) { //simple function to load your mod, if you dont wanna do it manually :troll:
     uploadMod(link);
     setTimeout(function() {
         parseHelpers();
@@ -73,10 +73,21 @@ function loadMod(link) {
 
 //if you are using tampermonkey or smth a js mod loader file should look something like this:
 /*
-    uploadMod('modlinkhere');
-    parseHelpers();
-    uploadMod('modlink2here);
-    parseHelpers();
-    loadHelpers();
+    // ==UserScript==
+    // @name         CC7 Mod Loader
+    // @namespace    http://tampermonkey.net/
+    // @version      0.1
+    // @description  Load your cc7 mod
+    // @author       You
+    // @match        beta.cookie-seven.app
+    // @icon         https://www.google.com/s2/favicons?sz=64&domain=undefined.
+    // @grant        none
+    // ==/UserScript==
+
+    (function() {
+        'use strict';
+
+        // Your code here...
+        loadMod('yourModNameHere');
+    })();
 */
-//at least i think so??
