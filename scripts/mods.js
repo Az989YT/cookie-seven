@@ -60,10 +60,15 @@ function parseHelpers() { //run this after eaach mod you import
 }
 
 function loadHelpers() { //NOTE, RUN THIS FUNCTION ONLY WHEN ALL OF YOUR MODS ARE LOADED!!
-    var choice = confirm('Are all of the mods you want uploaded?')
-    if(choice) {
-        display.updateShop();
-    }
+    display.updateShop();
+}
+
+function loadMod(link) {
+    uploadMod(link);
+    setTimeout(function() {
+        parseHelpers();
+        loadHelpers();
+    }, 1000);
 }
 
 //if you are using tampermonkey or smth a js mod loader file should look something like this:
